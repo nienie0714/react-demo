@@ -5,6 +5,8 @@ import React from 'react';
  */
 export default class TodoModel {
     constructor() {
+      // this 指代TodoModel实例，model
+      this.STORE_KEY = 'todos';
       this.todos = localStorage.getItem(this.STORE_KEY)?JSON.parse(localStorage.getItem(this.STORE_KEY)):[]; // 存放所有的todos
       // 注册监听器，当模型数据发生变化会调用这些监听函数
       this.listeners = [];

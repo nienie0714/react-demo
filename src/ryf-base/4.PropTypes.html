@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script src="./build/react.js"></script>
+    <script src="./build/react-dom.js"></script>
+    <script src="./build/browser.min.js"></script>
+  </head>
+  <body>
+    <div id="example"></div>
+    <div id="example1"></div>
+    <script type="text/babel">
+      // 组件的属性可以接受任意值，字符串/对象/函数等等都可以，我们需要一种机制，验证别人使用组件时，提供的参数是否符合要求
+      // 组件类的PropTypes属性，就用用来验证组件实例的属性是否符合要求
+      var MyTitle = React.createClass({
+        propTypes: {
+          title: React.PropTypes.string.isRequired
+        },
+        getDefaultProps: function() {
+          // 默认值
+          return {
+            title: 'hello world'
+          };
+        },
+        render: function() {
+          return <h1>{this.props.title}</h1>;
+        }
+      });
+
+      // var data = 123;
+      var data = '123';
+      ReactDOM.render(<MyTitle title={data} />, document.getElementById('example'));
+      // Warning: Failed propType: Invalid prop `title` of type `number` supplied to `MyTitle`, expected `string`.
+    </script>
+  </body>
+</html>
